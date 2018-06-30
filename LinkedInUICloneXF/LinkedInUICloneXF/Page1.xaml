@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+
+             x:Class="LinkedInUICloneXF.Page1">
+
+    <Grid>
+
+        <ScrollView Margin="0,20,0,0" x:Name="MyScrollView"  Scrolled="MyScrollView_Scrolled"   >
+
+            <StackLayout VerticalOptions="Fill"  >
+                <ListView ItemSelected="ListOfPost_OnItemSelected" x:Name="ListOfPost" HasUnevenRows="True"  BackgroundColor="Transparent"   RowHeight="210" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell  >
+
+                                <ViewCell.View >
+                                    <Frame BackgroundColor="White" Margin="0,5">
+                                        <StackLayout  >
+                                            <StackLayout Orientation="Horizontal" >
+                                                <forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+                                                  WidthRequest="50" HeightRequest="50"
+                                                  Source = "{Binding PersonProfilePicture}">
+                                                    <forms:CachedImage.Transformations>
+                                                        <transformations:CircleTransformation BorderSize="3" BorderHexColor="#ffffff"/>
+                                                    </forms:CachedImage.Transformations>
+                                                </forms:CachedImage>
+                                                <StackLayout Spacing="-2" Margin="5,0,0,0" Orientation="Vertical">
+                                                    <Label Text="{Binding PersonName}" FontAttributes="Bold"></Label>
+                                                    <Label Text="{Binding PersonCurrentPosition}"></Label>
+                                                    <Label Text="{Binding Date}" FontSize="10"></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+                                            <Label Text="{Binding Description}"></Label>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding PostLikes,StringFormat='{0} likes'}}"></Label>
+                                                <Label Text="{Binding PostComments,StringFormat='{0} comments'}}"></Label>
+                                            </StackLayout>
+                                            <BoxView Color="LightGray" HeightRequest="1" HorizontalOptions="Fill"></BoxView>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  >
+                                                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Margin="0,5,0,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Orientation="Horizontal"   HorizontalOptions="Center"  VerticalOptions="Center">
+                                                        <forms:CachedImage WidthRequest="20" HeightRequest="20"  Source = "like"/>
+                                                        <Label Text="Like" FontSize="14"></Label>
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Column="1" Orientation="Horizontal"    HorizontalOptions="Center"  VerticalOptions="Center">
+                                                        <forms:CachedImage  WidthRequest="20" HeightRequest="20" Source = "chat"/>
+                                                        <Label Text="Comment" FontSize="14"></Label>
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Column="2" Orientation="Horizontal"   HorizontalOptions="Center"  VerticalOptions="Center">
+
+                                                        <forms:CachedImage  WidthRequest="20" HeightRequest="20" Source = "share"/>
+                                                        <Label Text="Share" FontSize="14"></Label>
+                                                    </StackLayout>
+                                                </Grid>
+
+
+
+
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Orientation="Horizontal" x:Name="TopBar" VerticalOptions="Start" BackgroundColor="#0073B2" HeightRequest="40">
+
+            <forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center" Margin="10,2"
+                           WidthRequest="25" HeightRequest="25"
+                           Source = "person1">
+                <forms:CachedImage.Transformations>
+                    <transformations:CircleTransformation BorderSize="3" BorderHexColor="#ffffff"/>
+                </forms:CachedImage.Transformations>
+            </forms:CachedImage>
+            <Entry BackgroundColor="#E1E9EE" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="10"  Margin="5" Placeholder="Search"></Entry>
+            <forms:CachedImage HorizontalOptions="End" VerticalOptions="Center"
+                               WidthRequest="15" HeightRequest="15" Margin="0,0,10,0"
+                               Source = "work" />
+
+        </StackLayout>
+        <Frame x:Name="BottomBar" VerticalOptions="End" HasShadow="True"  HeightRequest="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+                                   WidthRequest="15" HeightRequest="15"
+                                   Source = "home" Grid.Column="0"/>
+                <forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+                                   WidthRequest="15" HeightRequest="15"
+                                   Source = "group" Grid.Column="1"/>
+                <forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+                                   WidthRequest="15" HeightRequest="15"
+                                   Source = "chat" Grid.Column="2"/>
+                <forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+                                   WidthRequest="15" HeightRequest="15"
+                                   Source = "notification" Grid.Column="3"/>
+                <forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+                                   WidthRequest="15" HeightRequest="15"
+                                   Source = "briefcase" Grid.Column="4"/>
+
+
+            </Grid>
+        </Frame>
+    </Grid>
+
+
+</ContentPage>

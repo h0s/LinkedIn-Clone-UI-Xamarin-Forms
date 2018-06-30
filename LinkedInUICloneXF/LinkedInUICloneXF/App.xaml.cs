@@ -13,7 +13,7 @@ namespace LinkedInUICloneXF
 		{
 			InitializeComponent();
 
-			MainPage = new LinkedInUICloneXF.Page1();
+			MainPage = new LinkedInUICloneXF.MainPage();
 		}
 
 		protected override void OnStart ()
